@@ -1,5 +1,8 @@
 :root {
-    --primary-color: orange;
+    --primary-color: black;
+    --card-border-radious: 7px;
+    --card-title-color: orange;
+    --card-category-color: seagreen;
 }
 * {
     margin: 0;
@@ -9,35 +12,105 @@
 body {
     font-family: serif;
     font-size: 14px;
-}
-.card-container {
-    border: 1px solid black;
-    max-width: 1200px;
-    width: 90%;
-    display: grid;
+    display: flex;
+    align-items: center;
     margin: 2rem;
-    background-color: var(--primary-color);
+}
+/* Mobile view */
+.card-container {
+    /* border: 1px solid black; */
+    /* max-width: 1200px; */
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    margin: 5rem;
+    /* background-color: var(--primary-color); */
 }
 .card {
-    /* border: 1px solid #000; */
+    /* border: 2px solid #000; */
     /* height: 200px; */
+    box-shadow: 0px 2px 4px black;
+    transition: all 0.2s ease-out;
+    border-radius: var(--card-border-radious);
+    &:hover {
+        box-shadow: 3px 6px 30px black;
+        transform: translateY(-5px);
+    }
 }
 .card-link {
-
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-color);
 }
 .card-img {
-
+    width: 100%;
+    object-fit: cover;
+    /* height: 33%; */
+    /* border-radius: var(--card-border-radious); */
+    border-top-left-radius: var(--card-border-radious);
+    border-top-right-radius: var(--card-border-radious);
 }
 .card-body {
-
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 .card-category {
-
+    color: var(--card-category-color);
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 .card-title {
-
+    color: var(--card-title-color);
+    margin-bottom: 1.3rem;
+    font-family: cursive;
+    font-size: 2rem;
 }
 .card-decription {
-
+    flex-grow: 1;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
 }
-.card-
+.card-post-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.card-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.card-author {
+    color: var(--card-category-color);
+    font-family: cursive;
+    font-size: 1.2rem;
+}
+.card-date {
+    color: #777;
+}
+/* Tablet view */
+@media (min-width: 700px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-img {
+        width: 100%;
+        height: 35%;
+    }
+}
+/* Desktop view */
+@media (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card-img {
+        width: 100%;
+        height: 35%;
+    }
+}
